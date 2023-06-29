@@ -1,0 +1,1 @@
+INSERT INTO brand (id, brand_name) VALUES (1, 'ZARA');
