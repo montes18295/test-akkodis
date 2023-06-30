@@ -1,0 +1,16 @@
+spring:
+  datasource:
+    url: jdbc:h2:mem:e-commerce-test
+    username: akkodis-test
+    password: test-password
+    driverClassName: org.h2.Driver
+  h2:
+    console.enabled: true
+    spring.jpa.database-platform: org.hibernate.dialect.H2Dialect
+  jpa:
+    defer-datasource-initialization: true
+    show_sql: true
+  sql:
+    init:
+      mode: always
+      data-locations: classpath*:database/import_brands_test.sql, classpath*:database/import_products_test.sql, classpath*:database/import_prices_test.sql
