@@ -14,6 +14,7 @@ import org.akkodis.test.domain.service.PriceService;
 import org.modelmapper.ModelMapper;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -39,7 +40,7 @@ public class PriceController {
             @ApiResponse(responseCode = "404", description = "Precio no encontrado",
                     content = @Content) })
     @GetMapping("/filter")
-    public PriceResponse getPriceByFilter(@Valid SearchPriceRequest searchPriceRequest) {
+    public PriceResponse getPriceByFilter(SearchPriceRequest searchPriceRequest) {
 
         Price price = priceService.searchPrice(modelMapper.map(searchPriceRequest, SearchPrice.class));
         return modelMapper.map(price, PriceResponse.class);

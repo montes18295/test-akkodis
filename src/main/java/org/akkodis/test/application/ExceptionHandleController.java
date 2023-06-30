@@ -46,7 +46,7 @@ public class ExceptionHandleController {
 
   /**
    * <p>Manejo de la excepción MultipleResultException.</p>
-   * <p>Para cuando se realiza una acción no permitida.</p>
+   * <p>Para cuando se espera ningún o un resultado y se obtiene mas de uno</p>
    *
    * @param multipleResultException exception lanzada.
    * @return MessageError objeto con la información a devolver.
