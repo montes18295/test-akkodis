@@ -3,9 +3,7 @@ package org.akkodis.test.application;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import org.akkodis.test.domain.exception.ArgumentNullException;
-import org.akkodis.test.domain.exception.MultipleResultException;
 import org.akkodis.test.domain.exception.ResourceNotFoundException;
-import org.apache.tomcat.util.http.fileupload.impl.SizeLimitExceededException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,25 +36,6 @@ public class ExceptionHandleController {
 
     String message = messageSource.getMessage(
             resourceNotFoundException.getMessage(), null, Locale.getDefault());
-
-    logger.warn(message);
-
-    return new MessageError(message);
-  }
-
-  /**
-   * <p>Manejo de la excepción MultipleResultException.</p>
-   * <p>Para cuando se espera ningún o un resultado y se obtiene mas de uno</p>
-   *
-   * @param multipleResultException exception lanzada.
-   * @return MessageError objeto con la información a devolver.
-   */
-  @ExceptionHandler({MultipleResultException.class})
-  @ResponseStatus(HttpStatus.FORBIDDEN)
-  public MessageError handleMultipleResultException(MultipleResultException multipleResultException) {
-
-    String message = messageSource.getMessage(
-            multipleResultException.getMessage(), null, Locale.getDefault());
 
     logger.warn(message);
 

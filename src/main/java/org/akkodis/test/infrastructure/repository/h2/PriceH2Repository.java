@@ -1,7 +1,5 @@
 package org.akkodis.test.infrastructure.repository.h2;
 
-import jakarta.persistence.NonUniqueResultException;
-import org.akkodis.test.domain.exception.MultipleResultException;
 import org.akkodis.test.domain.model.Price;
 import org.akkodis.test.domain.repository.PriceRepository;
 import org.akkodis.test.domain.repository.dto.SearchPrice;
@@ -28,23 +26,14 @@ public class PriceH2Repository implements PriceRepository {
 
     /**
      * {@inheritDoc}
-     *
-     * @throws MultipleResultException <p>Cuando obtiene mas de un resultado</p>
      */
     @Override
     public Optional<Price> getPriceByFilterWithMaxPriority(SearchPrice searchPrice) {
 
-        Optional<PriceDbo> optionalPriceDbo = Optional.empty();
-
-        try {
-            optionalPriceDbo = priceSpringDataRepository
+        Optional<PriceDbo> optionalPriceDbo = priceSpringDataRepository
                     .findByStartDateBeforeAndEndDateAfterAndProductIdAndBrandIdOrderByPriorityDesc(
                             searchPrice.getApplicationDate(), searchPrice.getApplicationDate(),
                             searchPrice.getProductId(), searchPrice.getBrandId());
-        } catch (NonUniqueResultException e) {
-            throw new MultipleResultException("price.search.exception.multipleresult", e);
-        }
-
 
         return optionalPriceDbo.isEmpty() ?
                 Optional.empty() :

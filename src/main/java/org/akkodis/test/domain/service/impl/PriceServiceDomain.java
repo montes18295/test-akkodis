@@ -22,7 +22,6 @@ public class PriceServiceDomain implements PriceService {
      *
      * @throws org.akkodis.test.domain.exception.ResourceNotFoundException <p>En caso de no encontrar ningún precio.</p>
      * @throws org.akkodis.test.domain.exception.ArgumentNullException <p>En caso de obtener null en el parámetro.</p>
-     * @throws org.akkodis.test.domain.exception.MultipleResultException <p>En el caso de obtener mas de un resultado</p>
      */
     @Override
     public Price searchPrice(SearchPrice searchPrice) {
