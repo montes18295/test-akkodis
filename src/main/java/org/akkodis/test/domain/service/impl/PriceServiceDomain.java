@@ -28,11 +28,11 @@ public class PriceServiceDomain implements PriceService {
     public Price searchPrice(SearchPrice searchPrice) {
 
         if (searchPrice == null || searchPrice.getApplicationDate() == null) {
-            throw new ArgumentNullException();
+            throw new ArgumentNullException("price.search.exception.argumentnull");
         }
 
         Optional<Price> optionalPrice = priceRepository.getPriceByFilterWithMaxPriority(searchPrice);
 
-        return optionalPrice.orElseThrow(ResourceNotFoundException::new);
+        return optionalPrice.orElseThrow(() -> new ResourceNotFoundException("price.search.exception.notfound"));
     }
 }

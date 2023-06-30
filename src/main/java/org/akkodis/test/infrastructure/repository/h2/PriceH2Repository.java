@@ -42,7 +42,7 @@ public class PriceH2Repository implements PriceRepository {
                             searchPrice.getApplicationDate(), searchPrice.getApplicationDate(),
                             searchPrice.getProductId(), searchPrice.getBrandId());
         } catch (NonUniqueResultException e) {
-            throw new MultipleResultException(e);
+            throw new MultipleResultException("price.search.exception.multipleresult", e);
         }
 
 
