@@ -10,7 +10,7 @@ import java.util.Optional;
 @Repository
 public interface PriceSpringDataRepository extends JpaRepository<PriceDbo, Long> {
 
-    Optional<PriceDbo> findByStartDateBeforeAndEndDateAfterAndProductIdAndBrandIdOrderByPriorityDesc(
+    Optional<PriceDbo> findFirstByStartDateBeforeAndEndDateAfterAndProductIdAndBrandIdOrderByPriorityDesc(
             LocalDateTime beforeStartDate, LocalDateTime afterEndDate, long productId, long brandId);
 
 }

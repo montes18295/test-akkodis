@@ -5,16 +5,15 @@ import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
-import jakarta.validation.Valid;
 import org.akkodis.test.application.dto.request.SearchPriceRequest;
 import org.akkodis.test.application.dto.response.PriceResponse;
 import org.akkodis.test.domain.model.Price;
 import org.akkodis.test.domain.repository.dto.SearchPrice;
 import org.akkodis.test.domain.service.PriceService;
 import org.modelmapper.ModelMapper;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -33,7 +32,7 @@ public class PriceController {
     @Operation(summary = "Obtiene un precio por los filtros proporcionados")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Precio encontrado",
-                    content = { @Content(mediaType = "application/json",
+                    content = { @Content(mediaType = MediaType.APPLICATION_JSON_VALUE,
                             schema = @Schema(implementation = PriceResponse.class)) }),
             @ApiResponse(responseCode = "400", description = "Datos de entrada no válidos.",
                     content = @Content),
