@@ -25,7 +25,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @AutoConfigureMockMvc
 @TestPropertySource(
         locations = "classpath:application.yml")
-public class PriceControllerTest {
+class PriceControllerTest {
 
     @Autowired
     private MockMvc mockMvc;
@@ -38,7 +38,7 @@ public class PriceControllerTest {
             "2020-06-15 10.00.00,35455,1",
             "2020-06-16 21.00.00,35455,1"
     })
-    public void getPriceByFilter(String apptime,
+    void getPriceByFilter(String apptime,
                                  long productId, long brandId) throws Exception {
 
         DateTimeFormatter inputFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH.mm.ss");
