@@ -1,7 +1,9 @@
 package org.akkodis.test.domain.model;
 
-public class Brand {
+import lombok.Data;
 
+@Data
+public class Brand {
     long id;
     String brand;
 
