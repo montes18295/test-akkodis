@@ -31,8 +31,8 @@ public class PriceH2Repository implements PriceRepository {
     public Optional<Price> getPriceByFilterWithMaxPriority(SearchPrice searchPrice) {
 
         Optional<PriceDbo> optionalPriceDbo = priceSpringDataRepository
-                    .findFirstByStartDateBeforeAndEndDateAfterAndProductIdAndBrandIdOrderByPriorityDesc(
-                            searchPrice.getApplicationDate(), searchPrice.getApplicationDate(),
+                    .findMaxPriorityByApplicationDateAndProductIdAndBrandId(
+                            searchPrice.getApplicationDate(),
                             searchPrice.getProductId(), searchPrice.getBrandId());
 
         return optionalPriceDbo.isEmpty() ?
